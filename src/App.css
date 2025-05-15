@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+
+@media print {
+  /* Oculta todo */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Muestra solo el ticket */
+  .print-area,
+  .print-area * {
+    visibility: visible;
+  }
+
+  /* Estilo del área imprimible */
+  .print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 58mm;
+    padding: 8px;
+    font-size: 12px;
+    font-family: monospace;
+    line-height: 1.4;
+    background: white;
+  }
+
+  /* Oculta botones en impresión */
+  button,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Evita saltos de página */
+  .print-area {
+    page-break-inside: avoid;
+    page-break-before: avoid;
+    page-break-after: avoid;
+  }
+}
+/* Configuración en tu navegador al imprimir
+Cuando presiones “Imprimir Ticket”:
+
+Seleccioná tu impresora Gadnic
+
+En el panel de impresión:
+
+?? Desactivá “Encabezados y pies de página”
+
+?? Elegí tamaño de papel: 58mm x altura personalizada
+
+?? Márgenes: ninguno o “mínimos”
+
+?? Escala: “ajustar al contenido” o “100%” */
