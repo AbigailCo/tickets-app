@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("mesas")) || [];
-  //  console.log("Mesas cargadas desde localStorage:", stored);
+    //  console.log("Mesas cargadas desde localStorage:", stored);
     setMesas(stored);
     if (stored.length > 0) {
       setMesaSeleccionada(stored[0]);
@@ -92,10 +92,10 @@ function App() {
 
           {mesaSeleccionada ? (
             <>
-              <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">
+              <hr />
+              <h2 className="text-md font-bold mb-4 text-center text-gray-800">
                 Mesa: {mesaSeleccionada.nombre}
               </h2>
-
               <button
                 onClick={() => cerrarMesa(mesaSeleccionada.id)}
                 className="flex items-center gap-1 bg-gray-600 hover:bg-red-500 text-white text-sm px-2 py-1 rounded"

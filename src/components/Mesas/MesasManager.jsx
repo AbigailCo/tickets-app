@@ -24,7 +24,7 @@ function MesasManager({ mesas, onNuevaMesa, onSelectMesa }) {
 
   return (
     <div className="mb-6">
-      <h2 className="text-lg font-bold mb-2">Mesas</h2>
+     
       <div className="flex flex-col sm:flex-row gap-2 mb-2">
   <input
     value={nuevaMesa}
@@ -39,6 +39,7 @@ function MesasManager({ mesas, onNuevaMesa, onSelectMesa }) {
     <HandPlatter size={16} /> Crear mesa
   </button>
 </div>
+ <h2 className="text-lg font-bold mb-2">Mesas</h2>
       <ul className="flex flex-wrap ">
        
         {mesas.map((mesa) => (
