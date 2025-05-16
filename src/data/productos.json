@@ -1,70 +1,88 @@
 [
   {
-    "categoria": "Bebidas",
+    "categoria": "Bebidas chicas",
     "items": [
-      { "nombre": "Agua", "precio": 500 },
-      { "nombre": "Cerveza", "precio": 300 },
-      { "nombre": "Saborizadas", "precio": 400 },
-      { "nombre": "Gaseosa", "precio": 300 },
-      { "nombre": "Vino", "precio": 300 }
-
+      { "nombre": "Agua CH", "precio": 2000 },
+      { "nombre": "Cerveza Brahama CH", "precio": 3500 },
+      { "nombre": "Cerveza Quilmes CH", "precio": 3500 },
+      { "nombre": "Cerveza Corona CH", "precio": 4000 },
+      { "nombre": "Cerveza Stella CH", "precio": 4000 },
+      { "nombre": "Saborizadas CH", "precio": 3000 },
+      { "nombre": "Gaseosa CH", "precio": 3000 }
+    ]
+  },
+  {
+    "categoria": "Bebidas grandes",
+    "items": [
+      { "nombre": "Agua/soda GR", "precio": 4000 },
+      { "nombre": "Cerveza Brahama GR", "precio": 7500 },
+      { "nombre": "Cerveza Quilmes GR", "precio": 7500 },
+      { "nombre": "Cerveza Corona GR", "precio": 8500 },
+      { "nombre": "Cerveza Stella GR", "precio": 8500 },
+      { "nombre": "Saborizadas GR", "precio": 4500 },
+      { "nombre": "Gaseosa GR", "precio": 6000 },
+      { "nombre": "Vino", "precio": 9000 }
     ]
   },
   {
     "categoria": "Minutas",
     "items": [
-      { "nombre": "Milanesa", "precio": 450 },
-      { "nombre": "Costeleta", "precio": 450 },
-      { "nombre": "Napolitana", "precio": 600 },
-      { "nombre": "Pollo al Grille", "precio": 600 }
+      { "nombre": "Milanesa", "precio": 15000 },
+      { "nombre": "Costeleta", "precio": 1600 },
+      { "nombre": "Napolitana", "precio": 16500 },
+      { "nombre": "Pollo al Grille", "precio": 0 }
     ]
   },
   {
     "categoria": "Otras guarniciones",
     "items": [
-      { "nombre": "Papas fritas", "precio": 450 },
-      { "nombre": "Ensalada", "precio": 450 },
-      { "nombre": "Arroz", "precio": 600 },
-      { "nombre": "Pure", "precio": 600 },
-      { "nombre": "Tortilla de papas", "precio": 600 },
-      { "nombre": "Tortilla gratinada", "precio": 600 },
-      { "nombre": "Tortilla de napolitana", "precio": 600 }
+      { "nombre": "Papas fritas", "precio": 5000 },
+      { "nombre": "Papas c/u cheddar", "precio": 6000 },
+      { "nombre": "Ensalada", "precio": 5000 },
+      { "nombre": "Arroz", "precio": 0 },
+      { "nombre": "Pure", "precio": 0 },
+      { "nombre": "Tortilla de papas", "precio": 7500 },
+      { "nombre": "Tortilla gratinada", "precio": 8000 },
+      { "nombre": "Tortilla de napolitana", "precio": 8500 }
     ]
   },
   {
     "categoria": "Pastas",
     "items": [
-      { "nombre": "Ravioles", "precio": 500 },
-      { "nombre": "Fideos", "precio": 1200 }
+      { "nombre": "Ravioles", "precio": 8000 },
+      { "nombre": "Fideos", "precio": 8000 }
     ]
   },
   {
     "categoria": "Comidas Rapidas",
     "items": [
-      { "nombre": "Hamburguesa", "precio": 450 },
-      { "nombre": "Sandwich Milanesa", "precio": 450 },
-      { "nombre": "Empanadas", "precio": 600 },
-      { "nombre": "Pizza", "precio": 600 }
+      { "nombre": "Hamburguesa", "precio": 6000 },
+      { "nombre": "HamburCheddar", "precio": 6900 },
+      { "nombre": "Hamburguesa c/u papas", "precio": 6500 },
+      { "nombre": "Sandwich Milanesa", "precio": 6500 },
+      { "nombre": "Empanadas", "precio": 0 },
+      { "nombre": "Pizza Muzza", "precio": 13000 },
+      { "nombre": "Pizza Napo", "precio": 15000 },
+      { "nombre": "Pizza Calabreza", "precio": 17000 }
     ]
   },
   {
     "categoria": "Sin Tacc",
     "items": [
-      { "nombre": "Hambu Veggie", "precio": 500 },
-      { "nombre": "Ensalada", "precio": 300 },
-      { "nombre": "Tortilla", "precio": 400 },
-      { "nombre": "Carne Grille", "precio": 300 }
-
+      { "nombre": "Hambu Veggie", "precio": 4600 },
+      { "nombre": "Ensalada", "precio": 5000 },
+      { "nombre": "Tortilla", "precio": 7000 },
+      { "nombre": "Carne Grille", "precio": 0 }
     ]
   },
- 
+
   {
     "categoria": "Postres",
     "items": [
-      { "nombre": "Bom Bom Escoces", "precio": 450 },
-      { "nombre": "Bom Bom Suizo", "precio": 450 },
-      { "nombre": "Alfajor Helado", "precio": 600 },
-      { "nombre": "Dulce de mamon", "precio": 600 }
+      { "nombre": "Bom Bom Escoces", "precio": 0 },
+      { "nombre": "Bom Bom Suizo", "precio": 0 },
+      { "nombre": "Alfajor Helado", "precio": 0 },
+      { "nombre": "Dulce de mamon", "precio": 0 }
     ]
   }
 ]

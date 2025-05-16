@@ -92,9 +92,9 @@ function App() {
 
           {mesaSeleccionada ? (
             <>
-              <hr />
+
               <h2 className="text-md font-bold mb-4 text-center text-gray-800">
-                Mesa: {mesaSeleccionada.nombre}
+                Detalles de la mesa: {mesaSeleccionada.nombre}
               </h2>
               <button
                 onClick={() => cerrarMesa(mesaSeleccionada.id)}
