@@ -25,20 +25,20 @@ function MesasManager({ mesas, onNuevaMesa, onSelectMesa }) {
   return (
     <div className="mb-6">
       <h2 className="text-lg font-bold mb-2">Mesas</h2>
-      <div className="flex mb-2">
-        <input
-          value={nuevaMesa}
-          onChange={(e) => setNuevaMesa(e.target.value)}
-          placeholder="Nombre de la mesa"
-          className="border px-2 py-1 mr-2"
-        />
-        <button
-          onClick={agregarMesa}
-          className="flex items-center gap-1 bg-[#895805] text-white px-3 py-1 rounded"
-        >
-          <HandPlatter size={16} /> Crear mesa
-        </button>
-      </div>
+      <div className="flex flex-col sm:flex-row gap-2 mb-2">
+  <input
+    value={nuevaMesa}
+    onChange={(e) => setNuevaMesa(e.target.value)}
+    placeholder="Nombre de la mesa"
+    className="border px-2 py-1 rounded w-full sm:w-auto flex-1"
+  />
+  <button
+    onClick={agregarMesa}
+    className="flex items-center justify-center gap-1 bg-[#895805] text-white px-3 py-1 rounded w-full sm:w-auto"
+  >
+    <HandPlatter size={16} /> Crear mesa
+  </button>
+</div>
       <ul className="flex flex-wrap ">
        
         {mesas.map((mesa) => (
