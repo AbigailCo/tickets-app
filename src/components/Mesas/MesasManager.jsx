@@ -17,7 +17,7 @@ function MesasManager({ mesas, onNuevaMesa, onSelectMesa }) {
     setNuevaMesa("");
   };
   const seleccionarMesa = (mesa) => {
-    console.log("Mesa seleccionada:", mesa);
+    //console.log("Mesa seleccionada:", mesa);
     onSelectMesa(mesa);
   };
 
@@ -42,7 +42,7 @@ function MesasManager({ mesas, onNuevaMesa, onSelectMesa }) {
         {mesas.map((mesa) => (
           <li
             key={mesa.id}
-            className="cursor-pointer p-2 bg-gray-200 rounded hover:bg-gray-300"
+            className="cursor-pointer p-2 bg-gray-200 rounded hover:bg-[#895805]"
             onClick={() => seleccionarMesa(mesa)}
           >
             {mesa.nombre}

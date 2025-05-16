@@ -1,6 +1,6 @@
 import { DatosBanco, QRCodeComponent } from "../index";
 //import html2pdf from "html2pdf.js";
-
+import { ReceiptText } from "lucide-react";
 function TicketPreview({ products }) {
   const total = products.reduce((acc, p) => acc + p.precio * p.cantidad, 0);
 
@@ -13,7 +13,8 @@ function TicketPreview({ products }) {
     });
     return `${date} ${time}`;
   };
-{/*  const handleDownloadPDF = () => {
+  {
+    /*  const handleDownloadPDF = () => {
     console.log("Botón descargar clickeado");
     const now = new Date();
     const date = now.toISOString().replace(/[:.]/g, "-");
@@ -23,57 +24,70 @@ function TicketPreview({ products }) {
       return;
     }
     html2pdf().from(ticket).save(`ticket_${date}.pdf`);
-  }; */}
+  }; */
+  }
 
   return (
     <>
+      {/* Área imprimible */}
       <div className="print-area text-sm" id="print-area">
-        <div style={{ textAlign: "center", marginBottom: "8px" }}>
+        <div className="text-center mb-2">
           <h2>Restaurante San Martin</h2>
-          <p>Direccion: Calle Falsa 123</p>
+          <p>Dirección: Calle Falsa 123</p>
           <p>CUIT: 20-12345678-9</p>
           <p>Tel: (123) 456-7890</p>
           <hr />
-          <p style={{ marginTop: "8px", fontSize: "12px" }}>
-            Fecha: {getFormattedDateTime()}
-          </p>
+          <p className="mt-2 text-xs">Fecha: {getFormattedDateTime()}</p>
         </div>
-
-        <p>
-          <strong>Detalle de la compra</strong>
-        </p>
-        <ul style={{ marginBottom: "10px" }}>
-          {products.map((p, i) => (
-            <li key={i}>
-              {p.nombre} x{p.cantidad} - ${(p.precio * p.cantidad).toFixed(2)}
-            </li>
-          ))}
-        </ul>
-
-        <p style={{ textAlign: "right" }}>
-          <strong>Total: ${total.toFixed(2)}</strong>
-        </p>
-        <hr />
-        <div style={{ textAlign: "center", marginTop: "12px" }}>
+  
+        <div>
+          <p className="font-semibold">Detalle de la compra</p>
+          <ul className="mb-2">
+            {products.map((p, i) => (
+              <li key={i}>
+                {p.nombre} x{p.cantidad} - ${(
+                  p.precio * p.cantidad
+                ).toFixed(2)}
+              </li>
+            ))}
+          </ul>
+  
+          <p className="text-right font-semibold">
+            Total: ${total.toFixed(2)}
+          </p>
+          <hr />
+        </div>
+  
+        <div className="text-center mt-3">
           <DatosBanco />
         </div>
-        {/*<div style={{ textAlign: "center", marginTop: "12px" }}>
+  
+        {/* QR opcional */}
+        {/*
+        <div className="text-center mt-3">
           <QRCodeComponent monto={total} />
-        </div> */}
+        </div>
+        */}
       </div>
-
+  
+      {/* Botón de impresión (oculto al imprimir) */}
       <button
         onClick={() => window.print()}
-        className="mt-6 w-full bg-[#895805] text-white py-2 rounded-md hover:bg-[#af730b] transition print:hidden"
+         className="flex items-center justify-center gap-1 mt-4 bg-[#895805] hover:bg-[#af730b] text-white text-sm px-3 py-1.5 rounded transition print:hidden w-fit mx-auto"
       >
-        Imprimir / Guardar como PDF
+        <ReceiptText size={16} />
+        Imprimir / Guardar ticket
       </button>
-      {/* <button
+  
+      {/* Botón para descargar PDF (opcional) */}
+      {/*
+      <button
         onClick={handleDownloadPDF}
-        className="bg-green-600 text-white px-4 py-2 rounded"
+        className="bg-green-600 text-white px-4 py-2 rounded mt-2"
       >
         Descargar Ticket
-      </button> */}
+      </button>
+      */}
     </>
   );
 }

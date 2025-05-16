@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { CircleX } from "lucide-react";
 import "./App.css";
 import {
   ProductForm,
@@ -14,7 +15,7 @@ function App() {
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("mesas")) || [];
-    console.log("Mesas cargadas desde localStorage:", stored);
+  //  console.log("Mesas cargadas desde localStorage:", stored);
     setMesas(stored);
     if (stored.length > 0) {
       setMesaSeleccionada(stored[0]);
@@ -97,9 +98,9 @@ function App() {
 
               <button
                 onClick={() => cerrarMesa(mesaSeleccionada.id)}
-                className="bg-red-600 text-white px-4 py-2 rounded"
+                className="flex items-center gap-1 bg-gray-600 hover:bg-red-500 text-white text-sm px-2 py-1 rounded"
               >
-                Cerrar Mesa
+                <CircleX size={16} /> Cerrar mesa
               </button>
 
               <div className="flex flex-col lg:flex-row gap-6">
