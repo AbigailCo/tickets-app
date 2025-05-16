@@ -7,29 +7,26 @@ function App() {
   const [mesas, setMesas] = useState([]);
   const [mesaSeleccionada, setMesaSeleccionada] = useState(null);
 
-  // Carga mesas de localStorage al iniciar
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("mesas")) || [];
+    console.log("Mesas cargadas desde localStorage:", stored);
     setMesas(stored);
     if (stored.length > 0) {
-      setMesaSeleccionada(stored[0]); // Selecciona la primera mesa por defecto
+      setMesaSeleccionada(stored[0]); 
     }
   }, []);
 
-  // Actualiza las mesas en estado y en localStorage
   const actualizarMesas = (nuevasMesas) => {
     setMesas(nuevasMesas);
     localStorage.setItem("mesas", JSON.stringify(nuevasMesas));
   };
 
-  // Cuando se crea una nueva mesa desde MesasManager
   const handleNuevaMesa = (nuevaMesa) => {
     const nuevasMesas = [...mesas, nuevaMesa];
     actualizarMesas(nuevasMesas);
     setMesaSeleccionada(nuevaMesa);
   };
 
-  // Agregar producto a la mesa seleccionada
   const addProduct = (product) => {
     if (!mesaSeleccionada) return;
 
@@ -44,7 +41,6 @@ function App() {
     setMesaSeleccionada({ ...mesaSeleccionada, productos: productosActualizados });
   };
 
-  // Eliminar producto de la mesa seleccionada
   const removeProduct = (index) => {
     if (!mesaSeleccionada) return;
 

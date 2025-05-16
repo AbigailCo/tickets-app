@@ -4,7 +4,7 @@ function Logo() {
       <img
         src="/src/assets/logo.png"
         alt="Logo"
-        className="h-10 w-20 object-contain"
+        className="h-10 w-40 object-contain"
       />
     </div>
   );

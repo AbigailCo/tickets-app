@@ -1,25 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-function MesasManager({ onSelectMesa }) {
-  const [mesas, setMesas] = useState([]);
+function MesasManager({ mesas, onNuevaMesa, onSelectMesa }) {
   const [nuevaMesa, setNuevaMesa] = useState("");
 
-  useEffect(() => {
+
+  /*useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("mesas")) || [];
     setMesas(stored);
-  }, []);
+  }, []); */
 
   const agregarMesa = () => {
     if (!nuevaMesa.trim()) return;
-
+  
     const nueva = { id: Date.now(), nombre: nuevaMesa, productos: [] };
-    const actualizadas = [...mesas, nueva];
-    setMesas(actualizadas);
-    localStorage.setItem("mesas", JSON.stringify(actualizadas));
+    onNuevaMesa(nueva); // 👈 importante: delegamos la creación
     setNuevaMesa("");
   };
-
   const seleccionarMesa = (mesa) => {
+    console.log("Mesa seleccionada:", mesa);
     onSelectMesa(mesa);
   };
 
@@ -35,12 +33,12 @@ function MesasManager({ onSelectMesa }) {
         />
         <button
           onClick={agregarMesa}
-          className="bg-blue-600 text-white px-3 py-1 rounded"
+          className="bg-[#895805] text-white px-3 py-1 rounded"
         >
           Crear Mesa
         </button>
       </div>
-      <ul className="space-y-1">
+      <ul className="flex flex-wrap ">
         {mesas.map((mesa) => (
           <li
             key={mesa.id}

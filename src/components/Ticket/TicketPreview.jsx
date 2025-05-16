@@ -1,4 +1,5 @@
-import QRCodeComponent from './QRCodeComponent';
+
+import { DatosBanco, QRCodeComponent } from '../index';
 
 function TicketPreview({ products }) {
   const total = products.reduce((acc, p) => acc + p.precio * p.cantidad, 0);
@@ -36,13 +37,16 @@ function TicketPreview({ products }) {
         <p style={{ textAlign: "right" }}>
           <strong>Total: ${total.toFixed(2)}</strong>
         </p>
-
+        <hr />
         <div style={{ textAlign: "center", marginTop: "12px" }}>
-          <QRCodeComponent monto={total} />
+          <DatosBanco />
         </div>
-      </div>
+        {/*<div style={{ textAlign: "center", marginTop: "12px" }}>
+          <QRCodeComponent monto={total} />
+        </div> */}
+      </div> 
 
-      {/* Este botón debe estar fuera de .print-area */}
+      {/* Este botï¿½n debe estar fuera de .print-area */}
       <button
         onClick={() => window.print()}
         className="mt-6 w-full bg-[#895805] text-white py-2 rounded-md hover:bg-[#af730b] transition print:hidden"
