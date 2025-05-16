@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import productosDisponibles from '../../data/productos.json';
-import { SquarePlus } from 'lucide-react';
+import { useState } from "react";
+import productosDisponibles from "../../data/productos.json";
+import { SquarePlus } from "lucide-react";
 
 function ProductForm({ onAdd }) {
-  const [nombre, setNombre] = useState('');
-  const [precio, setPrecio] = useState('');
+  const [nombre, setNombre] = useState("");
+  const [precio, setPrecio] = useState("");
   const [cantidad, setCantidad] = useState(1);
   const [errores, setErrores] = useState({});
 
@@ -14,7 +14,7 @@ function ProductForm({ onAdd }) {
     );
     if (productoSeleccionado) {
       setNombre(productoSeleccionado.nombre);
-      setPrecio(productoSeleccionado.precio || '');
+      setPrecio(productoSeleccionado.precio || "");
       setErrores({});
     }
   };
@@ -22,11 +22,11 @@ function ProductForm({ onAdd }) {
   const validar = () => {
     const nuevosErrores = {};
 
-    if (!nombre) nuevosErrores.nombre = 'Seleccioná un producto.';
+    if (!nombre) nuevosErrores.nombre = "Seleccioná un producto.";
     if (!precio || isNaN(precio) || parseFloat(precio) <= 0)
-      nuevosErrores.precio = 'Ingresá un precio válido.';
+      nuevosErrores.precio = "Ingresá un precio válido.";
     if (!cantidad || isNaN(cantidad) || parseInt(cantidad) < 1)
-      nuevosErrores.cantidad = 'La cantidad debe ser al menos 1.';
+      nuevosErrores.cantidad = "La cantidad debe ser al menos 1.";
 
     setErrores(nuevosErrores);
     return Object.keys(nuevosErrores).length === 0;
@@ -42,8 +42,8 @@ function ProductForm({ onAdd }) {
       cantidad: parseInt(cantidad),
     });
 
-    setNombre('');
-    setPrecio('');
+    setNombre("");
+    setPrecio("");
     setCantidad(1);
     setErrores({});
   };
@@ -60,10 +60,14 @@ function ProductForm({ onAdd }) {
           className="w-full border px-3 py-2 rounded"
         >
           <option value="">Seleccionar producto</option>
-          {productosDisponibles.map((p, idx) => (
-            <option key={idx} value={p.nombre}>
-              {p.nombre}
-            </option>
+          {productosDisponibles.map((grupo, idx) => (
+            <optgroup key={idx} label={grupo.categoria}>
+              {grupo.items.map((item, i) => (
+                <option key={i} value={item.nombre}>
+                  {item.nombre}
+                </option>
+              ))}
+            </optgroup>
           ))}
         </select>
         {errores.nombre && (

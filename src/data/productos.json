@@ -1,6 +1,70 @@
 [
-  { "nombre": "Ravioles", "precio": 500 },
-  { "nombre": "Fideos", "precio": 1200 },
-  { "nombre": "Papas Fritas", "precio": 800 },
-  { "nombre": "Milanesa", "precio": 400 }
+  {
+    "categoria": "Bebidas",
+    "items": [
+      { "nombre": "Agua", "precio": 500 },
+      { "nombre": "Cerveza", "precio": 300 },
+      { "nombre": "Saborizadas", "precio": 400 },
+      { "nombre": "Gaseosa", "precio": 300 },
+      { "nombre": "Vino", "precio": 300 }
+
+    ]
+  },
+  {
+    "categoria": "Minutas",
+    "items": [
+      { "nombre": "Milanesa", "precio": 450 },
+      { "nombre": "Costeleta", "precio": 450 },
+      { "nombre": "Napolitana", "precio": 600 },
+      { "nombre": "Pollo al Grille", "precio": 600 }
+    ]
+  },
+  {
+    "categoria": "Otras guarniciones",
+    "items": [
+      { "nombre": "Papas fritas", "precio": 450 },
+      { "nombre": "Ensalada", "precio": 450 },
+      { "nombre": "Arroz", "precio": 600 },
+      { "nombre": "Pure", "precio": 600 },
+      { "nombre": "Tortilla de papas", "precio": 600 },
+      { "nombre": "Tortilla gratinada", "precio": 600 },
+      { "nombre": "Tortilla de napolitana", "precio": 600 }
+    ]
+  },
+  {
+    "categoria": "Pastas",
+    "items": [
+      { "nombre": "Ravioles", "precio": 500 },
+      { "nombre": "Fideos", "precio": 1200 }
+    ]
+  },
+  {
+    "categoria": "Comidas Rapidas",
+    "items": [
+      { "nombre": "Hamburguesa", "precio": 450 },
+      { "nombre": "Sandwich Milanesa", "precio": 450 },
+      { "nombre": "Empanadas", "precio": 600 },
+      { "nombre": "Pizza", "precio": 600 }
+    ]
+  },
+  {
+    "categoria": "Sin Tacc",
+    "items": [
+      { "nombre": "Hambu Veggie", "precio": 500 },
+      { "nombre": "Ensalada", "precio": 300 },
+      { "nombre": "Tortilla", "precio": 400 },
+      { "nombre": "Carne Grille", "precio": 300 }
+
+    ]
+  },
+ 
+  {
+    "categoria": "Postres",
+    "items": [
+      { "nombre": "Bom Bom Escoces", "precio": 450 },
+      { "nombre": "Bom Bom Suizo", "precio": 450 },
+      { "nombre": "Alfajor Helado", "precio": 600 },
+      { "nombre": "Dulce de mamon", "precio": 600 }
+    ]
+  }
 ]

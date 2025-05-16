@@ -33,9 +33,8 @@ function TicketPreview({ products }) {
       <div className="print-area text-sm" id="print-area">
         <div className="text-center mb-2">
           <h2>Restaurante San Martin</h2>
-          <p>Dirección: Calle Falsa 123</p>
-          <p>CUIT: 20-12345678-9</p>
-          <p>Tel: (123) 456-7890</p>
+          <p>Dirección: Sargento Cabral 300</p>
+          <p>Yapeyú, Corrientes</p>
           <hr />
           <p className="mt-2 text-xs">Fecha: {getFormattedDateTime()}</p>
         </div>
