@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import { ProductForm, ProductList, TicketPreview, Navbar, MesasManager } from "./components";
-
+import {
+  ProductForm,
+  ProductList,
+  TicketPreview,
+  Navbar,
+  MesasManager,
+} from "./components";
 
 function App() {
   const [mesas, setMesas] = useState([]);
@@ -12,7 +17,7 @@ function App() {
     console.log("Mesas cargadas desde localStorage:", stored);
     setMesas(stored);
     if (stored.length > 0) {
-      setMesaSeleccionada(stored[0]); 
+      setMesaSeleccionada(stored[0]);
     }
   }, []);
 
@@ -30,7 +35,10 @@ function App() {
   const addProduct = (product) => {
     if (!mesaSeleccionada) return;
 
-    const productosActualizados = [...(mesaSeleccionada.productos || []), product];
+    const productosActualizados = [
+      ...(mesaSeleccionada.productos || []),
+      product,
+    ];
     const nuevasMesas = mesas.map((mesa) =>
       mesa.id === mesaSeleccionada.id
         ? { ...mesa, productos: productosActualizados }
@@ -38,7 +46,10 @@ function App() {
     );
 
     actualizarMesas(nuevasMesas);
-    setMesaSeleccionada({ ...mesaSeleccionada, productos: productosActualizados });
+    setMesaSeleccionada({
+      ...mesaSeleccionada,
+      productos: productosActualizados,
+    });
   };
 
   const removeProduct = (index) => {
@@ -54,7 +65,15 @@ function App() {
     );
 
     actualizarMesas(nuevasMesas);
-    setMesaSeleccionada({ ...mesaSeleccionada, productos: productosActualizados });
+    setMesaSeleccionada({
+      ...mesaSeleccionada,
+      productos: productosActualizados,
+    });
+  };
+  const cerrarMesa = (idMesa) => {
+    const nuevasMesas = mesas.filter((mesa) => mesa.id !== idMesa);
+    actualizarMesas(nuevasMesas);
+    setMesaSeleccionada(null);
   };
 
   return (
@@ -63,7 +82,11 @@ function App() {
       <div className="min-h-screen flex justify-center items-start bg-gray-100 p-4">
         <div className="w-full max-w-6xl bg-white p-6 shadow-lg rounded-md">
           <div className="mb-6">
-            <MesasManager mesas={mesas} onNuevaMesa={handleNuevaMesa} onSelectMesa={setMesaSeleccionada} />
+            <MesasManager
+              mesas={mesas}
+              onNuevaMesa={handleNuevaMesa}
+              onSelectMesa={setMesaSeleccionada}
+            />
           </div>
 
           {mesaSeleccionada ? (
@@ -72,13 +95,23 @@ function App() {
                 Mesa: {mesaSeleccionada.nombre}
               </h2>
 
+              <button
+                onClick={() => cerrarMesa(mesaSeleccionada.id)}
+                className="bg-red-600 text-white px-4 py-2 rounded"
+              >
+                Cerrar Mesa
+              </button>
+
               <div className="flex flex-col lg:flex-row gap-6">
                 <div className="lg:basis-1/3">
                   <ProductForm onAdd={addProduct} />
                 </div>
 
                 <div className="lg:basis-1/3">
-                  <ProductList products={mesaSeleccionada.productos || []} onRemove={removeProduct} />
+                  <ProductList
+                    products={mesaSeleccionada.productos || []}
+                    onRemove={removeProduct}
+                  />
                 </div>
 
                 <div className="lg:basis-1/3">
@@ -87,7 +120,9 @@ function App() {
               </div>
             </>
           ) : (
-            <p className="text-center text-gray-500">Selecciona o crea una mesa para empezar.</p>
+            <p className="text-center text-gray-500">
+              Selecciona o crea una mesa para empezar.
+            </p>
           )}
         </div>
       </div>
