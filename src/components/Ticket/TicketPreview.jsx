@@ -62,11 +62,10 @@ function TicketPreview({ products }) {
         </div>
   
         {/* QR opcional */}
-        {/*
+
         <div className="text-center mt-3">
-          <QRCodeComponent monto={total} />
+          <QRCodeComponent />
         </div>
-        */}
       </div>
   
       {/* Botón de impresión (oculto al imprimir) */}
