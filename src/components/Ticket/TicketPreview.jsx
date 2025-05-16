@@ -27,7 +27,7 @@ function TicketPreview({ products }) {
 
   return (
     <>
-      <div className="print-area" id="print-area">
+      <div className="print-area text-sm" id="print-area">
         <div style={{ textAlign: "center", marginBottom: "8px" }}>
           <h2>Restaurante San Martin</h2>
           <p>Direccion: Calle Falsa 123</p>

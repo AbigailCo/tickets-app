@@ -2,54 +2,51 @@
 
 
 @media print {
-  /* Oculta todo */
-  body * {
-    visibility: hidden;
+  @page {
+    margin: 0;
+    size: 58mm auto;
   }
 
-  /* Muestra solo el ticket */
-  .print-area,
-  .print-area * {
-    visibility: visible;
-  }
-
-  /* Estilo del área imprimible */
   .print-area {
     position: absolute;
     left: 0;
     top: 0;
     width: 58mm;
-    padding: 8px;
+    max-height: 200mm; /* o lo que tu ticket permita */
+    overflow: hidden;
+    padding: 4mm;
     font-size: 12px;
     font-family: monospace;
     line-height: 1.4;
     background: white;
+    page-break-inside: avoid;
   }
 
-  /* Oculta botones en impresión */
-  button,
-  .no-print {
+  body * {
+    visibility: hidden;
+  }
+
+  .print-area, .print-area * {
+    visibility: visible;
+    page-break-inside: avoid;
+  }
+
+  button, .no-print {
     display: none !important;
   }
-
-  /* Evita saltos de página */
-  .print-area {
-    page-break-inside: avoid;
-    page-break-before: avoid;
-    page-break-after: avoid;
-  }
+ 
 }
-/* Configuración en tu navegador al imprimir
-Cuando presiones “Imprimir Ticket”:
+/* Configuraciï¿½n en tu navegador al imprimir
+Cuando presiones ï¿½Imprimir Ticketï¿½:
 
-Seleccioná tu impresora Gadnic
+Seleccionï¿½ tu impresora Gadnic
 
-En el panel de impresión:
+En el panel de impresiï¿½n:
 
-?? Desactivá “Encabezados y pies de página”
+?? Desactivï¿½ ï¿½Encabezados y pies de pï¿½ginaï¿½
 
-?? Elegí tamaño de papel: 58mm x altura personalizada
+?? Elegï¿½ tamaï¿½o de papel: 58mm x altura personalizada
 
-?? Márgenes: ninguno o “mínimos”
+?? Mï¿½rgenes: ninguno o ï¿½mï¿½nimosï¿½
 
-?? Escala: “ajustar al contenido” o “100%” */
+?? Escala: ï¿½ajustar al contenidoï¿½ o ï¿½100%ï¿½ */

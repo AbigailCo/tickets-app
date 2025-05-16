@@ -8,15 +8,15 @@ function DatosBanco() {
   const cuentaDomicilio = "Calle Falsa 123";
 
   return (
-    <div className="flex flex-col items-start p-1 text-[11px] space-y-[1px] leading-tight">
+    <div className="">
     <h2 className="text-gray-800 font-bold text-[13px]">Datos de Pago</h2>
-    <p className="text-gray-700 font-medium">Alias: {alias}</p>
-    <p className="text-gray-700 font-medium">Banco: {banco}</p>
-    <p className="text-gray-700 font-medium">Cuenta: {cuenta}</p>
-    <p className="text-gray-700 font-medium">CBU: {cbu}</p>
-    <p className="text-gray-700 font-medium">Titular: {cuentaTitular}</p>
-    <p className="text-gray-700 font-medium">CUIT: {cuentaCuit}</p>
-    <p className="text-gray-700 font-medium">Domicilio: {cuentaDomicilio}</p>
+    <p className="text-gray-700 text-[11px]">Alias: {alias}</p>
+    <p className="text-gray-700 text-[11px]">Banco: {banco}</p>
+    <p className="text-gray-700 text-[11px]">Cuenta: {cuenta}</p>
+    <p className="text-gray-700 text-[11px]">CBU: {cbu}</p>
+    <p className="text-gray-700 text-[11px]">Titular: {cuentaTitular}</p>
+    <p className="text-gray-700 text-[11px]">CUIT: {cuentaCuit}</p>
+    <p className="text-gray-700 text-[11px]">Domicilio: {cuentaDomicilio}</p>
   </div>
   );
 }
