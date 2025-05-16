@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { HandPlatter } from 'lucide-react';
 
 function MesasManager({ mesas, onNuevaMesa, onSelectMesa }) {
   const [nuevaMesa, setNuevaMesa] = useState("");
@@ -33,12 +34,13 @@ function MesasManager({ mesas, onNuevaMesa, onSelectMesa }) {
         />
         <button
           onClick={agregarMesa}
-          className="bg-[#895805] text-white px-3 py-1 rounded"
+          className="flex items-center gap-1 bg-[#895805] text-white px-3 py-1 rounded"
         >
-          Crear Mesa
+          <HandPlatter size={16} /> Crear mesa
         </button>
       </div>
       <ul className="flex flex-wrap ">
+       
         {mesas.map((mesa) => (
           <li
             key={mesa.id}
