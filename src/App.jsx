@@ -7,6 +7,7 @@ import {
   TicketPreview,
   Navbar,
   MesasManager,
+  SeleccionRolModal,
 } from "./components";
 
 function App() {
@@ -79,6 +80,7 @@ function App() {
 
   return (
     <>
+   
       <Navbar />
       <div className="min-h-screen flex justify-center items-start bg-gray-100 p-4">
         <div className="w-full max-w-6xl bg-white p-6 shadow-lg rounded-md">
