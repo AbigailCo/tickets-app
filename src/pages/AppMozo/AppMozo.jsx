@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
 import { CircleX } from "lucide-react";
+import { db } from '../../firebase/firebase'; // tu config de firebase
+import { doc, setDoc, deleteDoc, updateDoc, arrayUnion, getDoc, onSnapshot, collection } from "firebase/firestore";
+
+
 // import "./App.css";
 
 import * as C from "../../components";
@@ -16,21 +20,41 @@ function AppMozo() {
       setMesaSeleccionada(stored[0]);
     }
   }, []);
+     useEffect(() => {
+    const unsubscribe = onSnapshot(collection(db, "mesas"), (snapshot) => {
+      const mesasActualizadas = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setMesas(mesasActualizadas);
+    });
+  
+    return () => unsubscribe(); // limpiar el listener al desmontar
+  }, []);
 
   const actualizarMesas = (nuevasMesas) => {
     setMesas(nuevasMesas);
     localStorage.setItem("mesas", JSON.stringify(nuevasMesas));
   };
 
-  const handleNuevaMesa = (nuevaMesa) => {
+  const handleNuevaMesa = async (nuevaMesa) => {
+    const ref = doc(db, "mesas", nuevaMesa.id.toString());
+    await setDoc(ref, { ...nuevaMesa, productos: [] }); // crea mesa vacía
+
     const nuevasMesas = [...mesas, nuevaMesa];
     actualizarMesas(nuevasMesas);
     setMesaSeleccionada(nuevaMesa);
   };
 
-  const addProduct = (product) => {
+  const addProduct = async (product) => {
     if (!mesaSeleccionada) return;
 
+    const ref = doc(db, "mesas", mesaSeleccionada.id.toString());
+    await updateDoc(ref, {
+      productos: arrayUnion(product),
+    });
+
+    // Luego actualizás localmente también
     const productosActualizados = [
       ...(mesaSeleccionada.productos || []),
       product,
@@ -48,37 +72,49 @@ function AppMozo() {
     });
   };
 
-  const removeProduct = (index) => {
+  const removeProduct = async (index) => {
     if (!mesaSeleccionada) return;
 
-    const productosActualizados = [...(mesaSeleccionada.productos || [])];
-    productosActualizados.splice(index, 1);
+    const ref = doc(db, "mesas", mesaSeleccionada.id.toString());
+    const snap = await getDoc(ref);
 
-    const nuevasMesas = mesas.map((mesa) =>
-      mesa.id === mesaSeleccionada.id
-        ? { ...mesa, productos: productosActualizados }
-        : mesa
-    );
+    if (snap.exists()) {
+      const data = snap.data();
+      const productos = data.productos || [];
 
-    actualizarMesas(nuevasMesas);
-    setMesaSeleccionada({
-      ...mesaSeleccionada,
-      productos: productosActualizados,
-    });
+      productos.splice(index, 1); // eliminás por índice
+      await updateDoc(ref, { productos }); // actualizás el array entero
+
+      // también actualizás localmente
+      const nuevasMesas = mesas.map((mesa) =>
+        mesa.id === mesaSeleccionada.id ? { ...mesa, productos } : mesa
+      );
+
+      actualizarMesas(nuevasMesas);
+      setMesaSeleccionada({
+        ...mesaSeleccionada,
+        productos,
+      });
+    }
   };
-  const cerrarMesa = (idMesa) => {
-    const nuevasMesas = mesas.filter((mesa) => mesa.id !== idMesa);
-    actualizarMesas(nuevasMesas);
-    setMesaSeleccionada(null);
+  const cerrarMesa = async (idMesa) => {
+    try {
+      await deleteDoc(doc(db, "mesas", idMesa.toString())); // elimina de Firebase
+      const nuevasMesas = mesas.filter(m => m.id !== idMesa);
+      actualizarMesas(nuevasMesas); // elimina localmente
+      setMesaSeleccionada(null);
+    } catch (error) {
+      console.error("Error al eliminar mesa:", error);
+    }
   };
 
   return (
     <>
-    <C.SeleccionRolModal />
+      <C.SeleccionRolModal />
       <C.Navbar />
       <div className="min-h-screen flex justify-center items-start bg-gray-100 p-4">
         <div className="w-full max-w-6xl bg-white p-6 shadow-lg rounded-md">
-           <C.CerrarSesion />
+          <C.CerrarSesion />
           <div className="mb-6">
             <C.MesasManager
               mesas={mesas}
@@ -111,7 +147,6 @@ function AppMozo() {
                     onRemove={removeProduct}
                   />
                 </div>
-
                 {/* <div className="lg:basis-1/3">
                   <C.TicketPreview products={mesaSeleccionada.productos || []} />
                 </div> */}
