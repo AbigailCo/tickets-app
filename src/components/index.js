@@ -6,8 +6,9 @@ export { default as CerrarSesion } from './Sesion/CerrarSesion'
 
 export { default as MesasManager } from './Mesas/MesasManager'
 
-export { default as ProductForm } from './Ticket/ProductForm'
-export { default as ProductList } from './Ticket/ProductList'
+export { default as ProductForm } from './Productos/ProductForm'
+export { default as ProductList } from './Productos/ProductList'
+
 export { default as TicketPreview } from './Ticket/TicketPreview'
 export { default as QRCodeComponent } from './Ticket/QRCodeComponent'
 export { default as DatosBanco } from './Ticket/DatosBanco'

@@ -1,5 +1,7 @@
 import React from "react";
-import Logo from "./Logo";
+
+
+import * as C from "../index"; // Importa todos los componentes desde el índice
 import { CalendarDays } from "lucide-react";
 
 function Navbar() {
@@ -14,15 +16,18 @@ function Navbar() {
   };
   return (
     <nav className="bg-[#895805] text-white py-3 shadow-md">
-  <div className="container mx-auto flex items-center justify-between">
-    <span className="text-sm opacity-80">Sistema de Tickets</span>
-    <Logo />
-    <p className="flex items-center gap-1 text-xs">
-      <CalendarDays size={16} />
-      Fecha: {getFormattedDateTime()}
-    </p>
-  </div>
-</nav>
+      <div className="container mx-auto flex items-center justify-between">
+        <div className="hidden sm:block">
+          <span className="text-sm opacity-80">Gestion de mesas</span>
+          <p className="flex items-center gap-1 text-xs opacity-80">
+            <CalendarDays size={16} />
+            Fecha: {getFormattedDateTime()}
+          </p>
+        </div>
+        <C.Logo />
+        <C.CerrarSesion />
+      </div>
+    </nav>
   );
 }
 

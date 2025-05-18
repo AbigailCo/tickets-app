@@ -7,16 +7,28 @@ function ProductForm({ onAdd }) {
     const [precio, setPrecio] = useState("");
     const [cantidad, setCantidad] = useState(1);
     const [errores, setErrores] = useState({});
+    const [busqueda, setBusqueda] = useState("");
+    const [mostrarDropdown, setMostrarDropdown] = useState(false);
 
-    const handleSelectChange = (e) => {
-        const productoSeleccionado = productosDisponibles
-            .flatMap((grupo) => grupo.items)
-            .find((p) => p.nombre === e.target.value);
-        if (productoSeleccionado) {
-            setNombre(productoSeleccionado.nombre);
-            setPrecio(productoSeleccionado.precio || "");
-            setErrores({});
-        }
+    // Aplanamos todos los productos para buscar fácilmente
+    const productosPlanos = productosDisponibles.flatMap((grupo) =>
+        grupo.items.map((item) => ({
+            ...item,
+            categoria: grupo.categoria,
+        }))
+    );
+
+    // Filtrar productos según la búsqueda
+    const productosFiltrados = productosPlanos.filter((producto) =>
+        producto.nombre.toLowerCase().includes(busqueda.toLowerCase())
+    );
+
+    const handleSelectProducto = (producto) => {
+        setNombre(producto.nombre);
+        setPrecio(producto.precio || "");
+        setErrores({});
+        setBusqueda(producto.nombre);
+        setMostrarDropdown(false);
     };
 
     const validar = () => {
@@ -46,30 +58,44 @@ function ProductForm({ onAdd }) {
         setPrecio("");
         setCantidad(1);
         setErrores({});
+        setBusqueda("");
     };
 
     return (
         <form
             onSubmit={handleSubmit}
-            className="product-form space-y-4 bg-gray-50 p-4 rounded-md shadow-sm"
+            className="product-form space-y-4 bg-gray-50 p-4 rounded-md shadow-sm relative"
         >
-            <div className="flex flex-col gap-2">
-                <select
-                    onChange={handleSelectChange}
-                    value={nombre}
+            <div className="flex flex-col gap-2 relative">
+                <input
+                    type="text"
+                    placeholder="Buscar producto..."
+                    value={busqueda}
+                    onChange={(e) => {
+                        setBusqueda(e.target.value);
+                        setMostrarDropdown(true);
+                    }}
+                    onFocus={() => setMostrarDropdown(true)}
                     className="w-full border px-3 py-2 rounded"
-                >
-                    <option value="">Seleccionar producto</option>
-                    {productosDisponibles.map((grupo, idx) => (
-                        <optgroup key={idx} label={grupo.categoria}>
-                            {grupo.items.map((item, i) => (
-                                <option key={i} value={item.nombre}>
-                                    {item.nombre}
-                                </option>
-                            ))}
-                        </optgroup>
-                    ))}
-                </select>
+                    autoComplete="off"
+                />
+
+                {/* Dropdown con opciones filtradas */}
+                {mostrarDropdown && productosFiltrados.length > 0 && (
+                    <ul className="absolute z-50 w-full max-h-48 overflow-auto bg-white border border-gray-300 rounded shadow-md"
+                        style={{ top: "25%", marginTop: "4px" }}>
+                        {productosFiltrados.map((producto, idx) => (
+                            <li
+                                key={idx}
+                                onClick={() => handleSelectProducto(producto)}
+                                className="cursor-pointer px-3 py-2 hover:bg-[#895805] hover:text-white"
+                            >
+                                {producto.nombre} <span className="text-sm text-gray-400">({producto.categoria})</span>
+                            </li>
+                        ))}
+                    </ul>
+                )}
+
                 {errores.nombre && (
                     <span className="text-red-600 text-sm">{errores.nombre}</span>
                 )}

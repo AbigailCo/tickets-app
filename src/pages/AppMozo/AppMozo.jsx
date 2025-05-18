@@ -114,7 +114,7 @@ function AppMozo() {
       <C.Navbar />
       <div className=" contenedor min-h-screen flex justify-center items-start bg-gray-100 p-4">
         <div className="w-full max-w-6xl bg-white p-6 shadow-lg rounded-md">
-          <C.CerrarSesion />
+          {/* <C.CerrarSesion /> */}
           <div className="mb-6">
             <C.MesasManager
               mesas={mesas}
