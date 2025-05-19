@@ -39,7 +39,7 @@ function AppMozo() {
 
   const handleNuevaMesa = async (nuevaMesa) => {
     const ref = doc(db, "mesas", nuevaMesa.id.toString());
-    await setDoc(ref, { ...nuevaMesa, productos: [] }); // crea mesa vacía
+    await setDoc(ref, { ...nuevaMesa, productos: [] }); // crea mesa vacï¿½a
 
     const nuevasMesas = [...mesas, nuevaMesa];
     actualizarMesas(nuevasMesas);
@@ -54,7 +54,7 @@ function AppMozo() {
       productos: arrayUnion(product),
     });
 
-    // Luego actualizás localmente también
+    // Luego actualizï¿½s localmente tambiï¿½n
     const productosActualizados = [
       ...(mesaSeleccionada.productos || []),
       product,
@@ -82,10 +82,8 @@ function AppMozo() {
       const data = snap.data();
       const productos = data.productos || [];
 
-      productos.splice(index, 1); // eliminás por índice
-      await updateDoc(ref, { productos }); // actualizás el array entero
-
-      // también actualizás localmente
+      productos.splice(index, 1); 
+      await updateDoc(ref, { productos }); 
       const nuevasMesas = mesas.map((mesa) =>
         mesa.id === mesaSeleccionada.id ? { ...mesa, productos } : mesa
       );
@@ -108,6 +106,7 @@ function AppMozo() {
     }
   };
 
+  
   return (
     <>
       <C.SeleccionRolModal />
@@ -115,6 +114,7 @@ function AppMozo() {
       <div className="min-h-screen flex justify-center items-start bg-gray-100 p-4 contenedor">
         <div className="w-full max-w-6xl bg-white p-6 shadow-lg rounded-md">
           {/* <C.CerrarSesion /> */}
+          <C.BotonCrud />
           <div className="mb-6">
             <C.MesasManager
               mesas={mesas}

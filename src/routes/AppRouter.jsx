@@ -13,6 +13,7 @@ function AppRouter() {
 
       <Route path="/mozo" element={<P.Mozo />} />
       <Route path="/caja" element={<P.Caja />} />
+      <Route path="/crud-productos" element={<C.CrudProductos />} />
     </Routes>
   );
 }
