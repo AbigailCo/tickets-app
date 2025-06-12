@@ -1,7 +1,7 @@
 import React from "react";
 
 
-import * as C from "../index"; // Importa todos los componentes desde el índice
+import * as C from "../index"; // Importa todos los componentes desde el ï¿½ndice
 import { CalendarDays } from "lucide-react";
 
 function Navbar() {
@@ -15,7 +15,7 @@ function Navbar() {
     return `${date} ${time}`;
   };
   return (
-    <nav className="bg-[#895805] text-white py-3 shadow-md">
+    <nav className="bg-[#a7803e] text-white py-3 shadow-md">
       <div className="container mx-auto flex items-center justify-between">
         <div className="hidden sm:block">
           <span className="text-sm opacity-80">Gestion de mesas</span>
