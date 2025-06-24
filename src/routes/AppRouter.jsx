@@ -12,6 +12,7 @@ function AppRouter() {
       {rol && <Route path="/" element={<Navigate to={`/${rol}`} replace />} />}
 
       <Route path="/mozo" element={<P.Mozo />} />
+      <Route path="/menu" element={<P.Menu />} />
       <Route path="/caja" element={<P.Caja />} />
       <Route path="/crud-productos" element={<C.CrudProductos />} />
     </Routes>
