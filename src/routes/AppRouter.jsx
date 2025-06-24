@@ -15,7 +15,7 @@ function AppRouter() {
       {!rol && (
         <Route
           path="*"
-          element={<Navigate to="/menu" replace />} // o <C.SeleccionRolModal /> si querés modal
+          element={<C.SeleccionRolModal />} // o <C.SeleccionRolModal /> si querés modal
         />
       )}
 
