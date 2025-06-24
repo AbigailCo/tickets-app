@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 
 import * as C from "../index"; // Importa todos los componentes desde el �ndice
 import { CalendarDays } from "lucide-react";
 
 function Navbar() {
+  const rolGuardado = localStorage.getItem("rol");
   const getFormattedDateTime = () => {
     const now = new Date();
     const date = now.toLocaleDateString("es-AR"); // Formato dd/mm/aaaa
@@ -14,6 +15,7 @@ function Navbar() {
     });
     return `${date} ${time}`;
   };
+ 
   return (
     <nav className="bg-[#a7803e] text-white py-3 shadow-md">
       <div className="container mx-auto flex items-center justify-between">
@@ -25,7 +27,8 @@ function Navbar() {
           </p>
         </div>
         <C.Logo />
-        <C.CerrarSesion />
+       {rolGuardado && <C.CerrarSesion />}
+       
       </div>
     </nav>
   );

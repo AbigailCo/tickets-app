@@ -4,7 +4,9 @@ import * as C from "../../components";
 import pag1 from "../../assets/pag1.jpeg";
 import pag2 from "../../assets/pag2.jpeg";
 
+
 function AppMozo() {
+    
   return (
     <>
       <C.Navbar />
