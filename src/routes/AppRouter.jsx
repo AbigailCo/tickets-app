@@ -8,11 +8,22 @@ function AppRouter() {
 
   return (
     <Routes>
-      {!rol && <Route path="*" element={<C.SeleccionRolModal />} />}
+      {/* Ruta pública que siempre se puede ver */}
+      <Route path="/menu" element={<P.Menu />} />
+
+      {/* Si no hay rol y no está en /menu, mostrar selección de rol */}
+      {!rol && (
+        <Route
+          path="*"
+          element={<Navigate to="/menu" replace />} // o <C.SeleccionRolModal /> si querés modal
+        />
+      )}
+
+      {/* Si hay rol, redirigir a su ruta */}
       {rol && <Route path="/" element={<Navigate to={`/${rol}`} replace />} />}
 
+      {/* Rutas protegidas */}
       <Route path="/mozo" element={<P.Mozo />} />
-      <Route path="/menu" element={<P.Menu />} />
       <Route path="/caja" element={<P.Caja />} />
       <Route path="/crud-productos" element={<C.CrudProductos />} />
     </Routes>
